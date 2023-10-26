@@ -6,19 +6,19 @@ import { Text } from '@twilio-paste/core/text';
 
 const CustomTaskList = () => {
   const [isOpen, setIsOpen] = useState(true);
-  if (!isOpen) {
-    return null;
-  }
 
   const dismiss = () => setIsOpen(false);
 
+  const openAlert = () => setIsOpen(true);
+
   return (
     <Theme.Provider theme="default">
-      <Alert onDismiss={dismiss} variant="neutral">
+      {isOpen && <Alert onDismiss={dismiss} variant="neutral">
         <Text>
           This is a dismissible demo component.
         </Text>
-      </Alert>
+      </Alert>}
+      <button onClick={openAlert}>open</button>
     </Theme.Provider>
   );
 };
